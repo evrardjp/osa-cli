@@ -2,7 +2,7 @@ from glob import glob
 from os.path import basename, splitext
 from setuptools import setup, find_packages
 
-VERSION='0.1.0'
+VERSION = '0.1.0'
 
 setup(
     name='openstack-ansible-cli',
@@ -14,7 +14,7 @@ setup(
     packages=find_packages('src/'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
-    tests_require=['pytest','tox'],
+    tests_require=['pytest', 'tox'],
     install_requires=[
         'Click',
     ],
@@ -22,7 +22,7 @@ setup(
         [console_scripts]
         osa=osa.main:cli
     ''',
-    classifiers= [
+    classifiers=[
         'Environment :: OpenStack',
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
