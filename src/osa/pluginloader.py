@@ -1,7 +1,5 @@
 import click
 
-STATUT = 'OK'
-
 
 def cli():
     """ OpenStack-Ansible CLI tools """
