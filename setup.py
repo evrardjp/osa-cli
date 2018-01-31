@@ -20,7 +20,7 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        osa=osa.pluginloader:cli
+        osa=osa.cli:entrypoint
     ''',
     classifiers=[
         'Environment :: OpenStack',
