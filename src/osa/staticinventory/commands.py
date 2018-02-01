@@ -2,8 +2,9 @@
 import click
 
 
-@click.command('convert',
+@click.command('generate',
                short_help='Converts openstack_inventory.json -> yaml files')
-def convert():
+@click.pass_obj
+def generate(osactx):
     """ Converts openstack_inventory.json to a static inventory structure"""
-    pass
+    click.echo(osactx.oadir)

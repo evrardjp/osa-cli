@@ -4,7 +4,7 @@ import click
 
 @click.command()
 def generate():
-    """ Generates /etc/openstack_inventory.json """
+    """ Generates /etc/openstack_deploy/openstack_inventory.json """
     pass
 
 
