@@ -2,10 +2,10 @@
 import os
 import click
 
-oadir = '/opt/openstack-ansible'
-userdir = '/etc/openstack_deploy'
 debug = False
-workdir = '/tmp'
+oadir = os.environ.get('OPENSTACK_ANSIBLE_FOLDER') or '/opt/openstack-ansible'
+userdir = os.environ.get('OPENSTACK_DEPLOY_FOLDER') or '/etc/openstack_deploy'
+workdir = os.environ.get('OPENSTACK_WORK_FOLDER') or '/tmp/osa'
 
 _folder_options = [
     click.option('--oadir',
