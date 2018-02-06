@@ -36,8 +36,7 @@ maincli = Command(entrypoint=osa.cli.entrypoint,
                       'dynamic_inventory',
                   ],
                   invalid_subcmds=['babar'])
-staticinventorycli = Command(entrypoint=osa.cli.static_inventory,
-                             valid_args=[
+staticinventorycli = Command(valid_args=[
                                  ["--oadir", './oa'],
                                  ["--workdir", './work']
                              ],
@@ -88,7 +87,7 @@ def test_invalidargs(clickrunner):
 # static inventory
 def test_usage_staticinventory(clickrunner):
     """ Test staticinventory cli can load and show its usage """
-    result = clickrunner.invoke(staticinventorycli.entrypoint)
+    result = clickrunner.invoke(maincli.entrypoint, ['static_inventory'])
     assert result.exit_code == 0
     assert "Usage" in result.output
     for valid_subcmd in staticinventorycli.valid_subcmds:

@@ -17,8 +17,12 @@ setup(
     tests_require=['pytest', 'tox'],
     install_requires=[
         'Click',
+        'click-plugins',
     ],
     entry_points='''
+        [osa_cli.plugins]
+        dynamic_inventory=osa.dynamicinventory.commands:dynamic_inventory
+        static_inventory=osa.staticinventory.commands:static_inventory
         [console_scripts]
         osa=osa.cli:entrypoint
     ''',
