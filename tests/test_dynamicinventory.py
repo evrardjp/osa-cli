@@ -16,11 +16,10 @@ except ImportError:
 @pytest.fixture
 def clickrunner():
     """ Initialize a cli runner function with a standard env"""
-    for folder in [osa.defaults.oadir,
-                   osa.defaults.userdir,
-                   osa.defaults.workdir]:
+    for foldertype in osa.defaults.folder_defaults.values():
+        print("Creating {}".format(foldertype))
         try:
-            os.makedirs(folder)
+            os.makedirs(foldertype['folder'])
         except OSError as exc:
             if exc.errno != errno.EEXIST:
                 raise
@@ -28,17 +27,17 @@ def clickrunner():
 
 
 def test_debug(clickrunner):
-    """ Test that debug mode shows the folders """
+    """ Test that debug mode shows the default folders """
     result = clickrunner.invoke(
         osa.cli.entrypoint, ['--debug', 'dynamic_inventory', 'generate'])
     print(result.output)
     assert "OpenStack-Ansible folder is" in result.output
-    assert osa.defaults.oadir in result.output
     assert "User overrides folder is" in result.output
-    assert osa.defaults.userdir in result.output
     assert "Work folder is" in result.output
-    assert osa.defaults.workdir in result.output
+    for foldertype in osa.defaults.folder_defaults.values():
+        assert foldertype['folder'] in result.output
     assert result.exit_code == 0
+    # TODO test overrides
 
 
 def test_hostlist(clickrunner):

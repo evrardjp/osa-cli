@@ -11,8 +11,7 @@ import osa.defaults
 # as options. This makes the folder locations available
 # for all its sub commands
 @click.group()
-@osa.defaults.folder_options
-@click.pass_context
+@osa.defaults.pass_folder_locations
 def static_inventory(ctx, **kwargs):
     """ Tools for generating a static inventory """
     ctx.obj = osa.defaults.OSAContext(debug=ctx.obj['debug'], **kwargs)

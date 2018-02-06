@@ -14,13 +14,12 @@ def clickrunner():
 
 
 def test_debug(clickrunner):
-    """ Test that debug mode shows the folders """
+    """ Test that debug mode shows the default folders """
     result = clickrunner.invoke(
         osa.cli.entrypoint, ['--debug', 'static_inventory', 'generate'])
-    assert result.exit_code == 0
     assert "OpenStack-Ansible folder is" in result.output
-    assert osa.defaults.oadir in result.output
     assert "User overrides folder is" in result.output
-    assert osa.defaults.userdir in result.output
     assert "Work folder is" in result.output
-    assert osa.defaults.workdir in result.output
+    for foldertype in osa.defaults.folder_defaults.values():
+        assert foldertype['folder'] in result.output
+    assert result.exit_code == 0

@@ -8,8 +8,7 @@ import osa.defaults
 # for all its sub commands
 # @osa.cli.entrypoint.group()
 @click.group()
-@osa.defaults.folder_options
-@click.pass_context
+@osa.defaults.pass_folder_locations
 def dynamic_inventory(ctx, **kwargs):
     """ Tools for manipulating the dynamic inventory """
     ctx.obj = osa.defaults.OSAContext(debug=ctx.obj['debug'], **kwargs)
