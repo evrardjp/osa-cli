@@ -5,13 +5,6 @@ from click.testing import CliRunner
 import osa.cli
 
 
-# Testing fixtures
-@pytest.fixture
-def clickrunner():
-    """ Initialize a cli runner function """
-    return CliRunner()
-
-
 # Testing tools
 class Command(object):
     def __init__(self, entrypoint=None,
