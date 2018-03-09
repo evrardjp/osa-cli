@@ -94,11 +94,3 @@ def test_usage_staticinventory(clickrunner):
         assert valid_subcmd in result.output
     for invalid_subcmd in staticinventorycli.invalid_subcmds:
         assert invalid_subcmd not in result.output
-
-
-def test_debug_staticinventory(clickrunner):
-    """ Test that debug mode works in static_inventory """
-    result = clickrunner.invoke(
-        osa.cli.entrypoint, ['--debug', 'static_inventory', '--help'])
-    assert result.exit_code == 0
-    assert "Debug is on" in result.output

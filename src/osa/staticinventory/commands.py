@@ -1,7 +1,7 @@
 """ Tools for static inventories """
 import click
 import osa.defaults
-
+import osa.utils as utils
 
 # Define the folder options only for the subcommands
 # that need them. This way some plugins which don't
@@ -11,10 +11,10 @@ import osa.defaults
 # as options. This makes the folder locations available
 # for all its sub commands
 @click.group()
-@osa.defaults.pass_folder_locations
+@utils.pass_folder_locations
 def static_inventory(ctx, **kwargs):
     """ Tools for generating a static inventory """
-    ctx.obj = osa.defaults.OSAContext(debug=ctx.obj['debug'], **kwargs)
+    ctx.obj = utils.OSAContext(debug=ctx.obj['debug'], **kwargs)
     if ctx.obj.debug:
         click.echo("OpenStack-Ansible folder is %s" % ctx.obj.oadir)
         click.echo("User overrides folder is %s" % ctx.obj.userdir)

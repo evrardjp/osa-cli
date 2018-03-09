@@ -1,18 +1,8 @@
 """ Tests all the functions of static inventory cli plugin """
-import os
-import pytest
-from click.testing import CliRunner
-import osa.cli
-import osa.defaults
+import osa
 
 
-# Testing fixtures
-@pytest.fixture
-def clickrunner():
-    """ Initialize a cli runner function """
-    return CliRunner()
-
-
+# clickrunner comes from the standard fixture file conftest.py
 def test_debug(clickrunner):
     """ Test that debug mode shows the default folders """
     result = clickrunner.invoke(

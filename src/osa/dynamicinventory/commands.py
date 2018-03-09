@@ -1,6 +1,6 @@
 """ Tools for dynamic inventories """
 import click
-import osa.defaults
+import osa.utils as utils
 
 
 # The dynamic inventory gets the default folder locations
@@ -8,18 +8,19 @@ import osa.defaults
 # for all its sub commands
 # @osa.cli.entrypoint.group()
 @click.group()
-@osa.defaults.pass_folder_locations
+@utils.pass_folder_locations
 def dynamic_inventory(ctx, **kwargs):
     """ Tools for manipulating the dynamic inventory """
-    ctx.obj = osa.defaults.OSAContext(debug=ctx.obj['debug'], **kwargs)
+    ctx.obj = utils.OSAContext(debug=ctx.obj['debug'], **kwargs)
     if ctx.obj.debug:
         click.echo("OpenStack-Ansible folder is %s" % ctx.obj.oadir)
         click.echo("User overrides folder is %s" % ctx.obj.userdir)
         click.echo("Work folder is %s" % ctx.obj.workdir)
 
+
 @dynamic_inventory.command()
 def generate():
-    """ Generates /etc/openstack_deploy/openstack_inventory.json """
+    """ Generates openstack_inventory.json """
     pass
 
 
