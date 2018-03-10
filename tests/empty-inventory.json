@@ -1,0 +1,9 @@
+{
+    "_meta":{
+        "hostvars": {}
+    },
+    "all":{
+        "children": [],
+        "hosts": []
+    }  
+}

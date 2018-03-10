@@ -1,0 +1,15 @@
+{
+    "_meta":{
+        "hostvars": {}
+    },
+    "all":{
+        "children": [],
+        "hosts": [],
+        "extraunusedkey": {}
+    },
+    "machin":{
+        "children": [],
+        "hosts": [],
+        "extraunusedkey": {}
+    }  
+}
