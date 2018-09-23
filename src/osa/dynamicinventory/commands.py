@@ -46,3 +46,8 @@ def view():
 def replace_host_ip():
     """ Edit host IP """
     pass
+
+@dynamic_inventory.command()
+def convert():
+    """ Convert inventory.json to inventory.yaml """
+    pass

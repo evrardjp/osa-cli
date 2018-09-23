@@ -20,10 +20,33 @@ def static_inventory(ctx, **kwargs):
         click.echo("User overrides folder is %s" % ctx.obj.userdir)
         click.echo("Work folder is %s" % ctx.obj.workdir)
 
-
-@static_inventory.command('generate',
-                          short_help='Converts openstack_inventory.json -> yaml files')
+@static_inventory.command()
 @click.pass_obj
-def generate(osactx):
-    """ Converts openstack_inventory.json to a static inventory structure"""
-    click.echo(osactx.oadir)
+def generate(global_ctx):
+    """ Dumbly assigns nodes in groups based on name patterns"""
+    pass
+    # name_patterns = {
+    #     'keystone': '.*keystone.*'
+    #     'nova': '.*nova.*'
+    #     'controller': ['.*infra.*','.*controller.*']
+    # }
+    # types = list(name_patterns.keys())
+    # nodes = set()
+    # with open(filename, 'r') as node_file:
+    #     for node in node_file.read():
+    #         nodes.add(node)
+    # compile list of regexps
+    # iterate across regexps (because it's like a priority list)
+    #   if host match regexp, remove host from unassigned set,
+    #     and add it to the appropriate groupname.
+    #   if host doesn't match, continue to next host.
+    # when all regexp are done, check if they are still hosts in
+    # the unassigned set.
+    # If there are, move those nodes to 'unassigned' group.
+    # Else be happy
+
+    # This can also be fully replaced with an ansible play:
+    # loading the current inventory grouping hosts by names,
+    # and templating the new group results into a new inventory.
+    # Easier to read.
+
